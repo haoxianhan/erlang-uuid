@@ -109,7 +109,7 @@ uuid1_time() ->
 %% @doc Use ClockSeq if supplied otherwise Generate random clock sequence.
 -spec uuid1_clockseq(null | binary()) -> <<_:14>>.
 uuid1_clockseq(null) ->
-    rand:seed(now_xor_pid()),
+    rand:seed(exsplus, now_xor_pid()),
     Rnd = rand:uniform(2 bsl 14 - 1),
     <<Rnd:14>>;
 uuid1_clockseq(ClockSeqArg) ->
